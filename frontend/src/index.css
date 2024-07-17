@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .form-label {
+    @apply mb-1 block;
+  }
+  .form-input {
+    @apply rounded border w-full outline-green-300 outline-1 px-3 py-2;
+  }
+  .bg-gradient-primary {
+    /* @apply bg-gradient-to-r from-green-300 to-sky-300; */
+    background-image: linear-gradient(60deg, #4acea4, #5bb2bc);
+  }
+
+  .btn-primary {
+    @apply w-full border-0 ease-in-out text-gray-700 font-medium bg-gradient-primary px-3 py-2 text-white rounded outline-none hover:bg-white hover:opacity-90;
+  }
+
+  .sidemenu {
+    background-image: linear-gradient(60deg, #4acea4, #5bb2bc);
+    @apply lg:w-[20%] w-[40%] duration-300 lg:relative lg:left-0 fixed left-[-100%] transition-all;
+  }
+
+  .sidemenu.open {
+    @apply sm:left-0;
+  }
+
+  .chat-message {
+    animation: 500ms popIn linear 1;
+  }
+
+  .gradient-border {
+    border: 10px solid; /* Adjust the width of the border as needed */
+    border-image-slice: 1;
+    border-width: 5px;
+    border-image-source: linear-gradient(to right, #ff7e5f, #feb47b);
+    /* You can adjust the gradient direction and colors */
+    padding: 10px; /* Adjust the padding as needed */
+  }
+  /* Hide the default scrollbar */
+  .custom-scroll::-webkit-scrollbar {
+    width: 5px; /* width of the scrollbar */
+  }
+
+  /* Track (the background of the scrollbar) */
+  .custom-scroll::-webkit-scrollbar-track {
+    background: #ffffff30; /* color of the track */
+  }
+
+  /* Handle (the draggable part of the scrollbar) */
+  .custom-scroll::-webkit-scrollbar-thumb {
+    background: #ffffff; /* color of the handle */
+    border-radius: 4px; /* roundness of the handle */
+  }
+
+  /* Handle on hover */
+  .custom-scroll::-webkit-scrollbar-thumb:hover {
+    background: #555; /* color of the handle when hovered */
+  }
+}
+
+@keyframes popIn {
+  0% {
+    transform: translateX(120px);
+    opacity: 0;
+  }
+}
