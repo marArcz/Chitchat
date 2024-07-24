@@ -12,14 +12,11 @@ function Conversation() {
    const [chatInput, setChatInput] = useState('')
    const chatBoxRef = useRef(null);
    const { user, isAuthenticated } = useAuthContext();
-   const [isMatchingUp, setIsMatchingUp] = useState(false)
+   const [isMatchingUp, setIsMatchingUp] = useState(false);
+   const [friend, setFriend] = useState(null)
    const [conversationId, setConversationId] = useState(null)
    const [currentChannel, setCurrentChannel] = useState(null)
    const [isConnected, setIsConnected] = useState(false)
-   const [matchedUser, setMatchedUser] = useState(null)
-   const [failedMatching, setFailedMatching] = useState(false)
-   const [matchedUserLeft, setMatchedUserLeft] = useState(false)
-   const [showMenu, setShowMenu] = useState(false)
 
 
    useEffect(() => {
@@ -31,7 +28,7 @@ function Conversation() {
    useEffect(() => {
       if (user) {
          // Connect to the chat WebSocket server
-         chatSocket.current = new WebSocket(`ws://localhost:8000/chat?userId=${user._id}`);
+         chatSocket.current = new WebSocket(`ws://localhost:8000/match-and-chat?userId=${user._id}`);
          chatSocket.current.onopen = () => {
             setIsConnected(true)
          }
@@ -42,27 +39,9 @@ function Conversation() {
          chatSocket.current.onmessage = (event) => {
             const data = JSON.parse(event.data);
 
-            if (data.type === 'match') {
-               setIsMatchingUp(false);
-               if (data.success) {
-                  toast.success('successfully matched!')
-                  console.log('succes match: ', data);
-                  setMatchedUser(data.matchedUser);
-                  setCurrentChannel(data.channelId);
-               } else {
-                  setFailedMatching(true);
-               }
-
-            } else if (data.type === 'private_message') {
+            if (data.type === 'private_message') {
                console.log(data)
                setChatMessages((prevMessages) => [...prevMessages, data.chat]);
-            }
-            else if (data.type === 'disconnected') {
-               setMatchedUserLeft(true)
-            }
-            else {
-               console.log("error: ", data)
-               toast.error(data.message)
             }
          };
       }

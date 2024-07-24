@@ -23,7 +23,7 @@ function App() {
             </Route>
             <Route element={<RootLayout />}>
               <Route index element={<Home />} />
-              <Route path=':conversationId/chat' element={<Home />} />
+              <Route path=':conversationId/conversation' element={<Home />} />
             </Route>
           </Routes>
         </UserAuthProvider>

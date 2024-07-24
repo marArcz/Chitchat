@@ -14,18 +14,22 @@
     /* @apply bg-gradient-to-r from-green-300 to-sky-300; */
     background-image: linear-gradient(60deg, #4acea4, #5bb2bc);
   }
+  .bg-gradient-secondary {
+    /* @apply bg-gradient-to-r from-green-300 to-sky-300; */
+    background-image: linear-gradient(60deg, #2fb0d7, rgb(94, 167, 168));
+  }
 
   .btn-primary {
-    @apply w-full border-0 ease-in-out text-gray-700 font-medium bg-gradient-primary px-3 py-2 text-white rounded outline-none hover:bg-white hover:opacity-90;
+    @apply w-full border-0 ease-in-out font-medium bg-gradient-primary px-3 py-2 text-white rounded outline-none hover:bg-white hover:opacity-90;
   }
 
   .sidemenu {
     background-image: linear-gradient(60deg, #4acea4, #5bb2bc);
-    @apply lg:w-[20%] w-[40%] duration-300 lg:relative lg:left-0 fixed left-[-100%] transition-all;
+    @apply lg:w-[20%] md:w-[40%] w-[70%] duration-300 lg:relative lg:left-0 fixed left-[-100%] transition-all;
   }
 
   .sidemenu.open {
-    @apply sm:left-0;
+    @apply left-0;
   }
 
   .chat-message {

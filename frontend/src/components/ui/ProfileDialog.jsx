@@ -53,10 +53,10 @@ const ProfileDialog = ({ showDialog, setShowDialog }) => {
                 className="bg-transparent shadow-none backdrop:none z-[666!important]"
             >
                 <div className='rounded-lg relative bg-white overflow-clip transition-all'>
-                    <div className="bg-gradient-primary h-[70px]">
+                    <div className="bg-gradient-primary lg:h-[70px] h-[80px]">
                     </div>
                     <div className="content p-5 transition-all">
-                        <UserAvatar name={user?.name} imgUrl={user?.imgUrl} className='mt-[-12%] border-white border-[3px]' size={80} />
+                        <UserAvatar name={user?.name} imgUrl={user?.imgUrl} className='lg:mt-[-12%] mt-[-18%] border-white border-[3px]' size={80} />
                         <div className="mt-3 flex justify-between">
                             <div>
                                 <p className='font-semibold text-lg'>{user?.name}</p>
@@ -67,7 +67,7 @@ const ProfileDialog = ({ showDialog, setShowDialog }) => {
                                     onClick={() => setShowEditProfile(s => !s)}
                                     size='sm'
                                     disabled={isLoading}
-                                    className={`bg-${showEditProfile ? 'gray' : 'green'}-700`}
+                                    className={`bg-${showEditProfile ? 'gray-700' : 'green-500'}`}
                                 >
                                     {showEditProfile ? 'Cancel' : 'Edit Profile'}
                                 </Button>

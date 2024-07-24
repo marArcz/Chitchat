@@ -8,6 +8,7 @@ import { ThemeProvider } from '@material-tailwind/react'
 import { customTheme } from './lib/appTheme.js'
 
 axios.defaults.baseURL = import.meta.env.VITE_API_URL;
+axios.defaults.withCredentials = true;
 
 
 const router = createBrowserRouter([
@@ -23,5 +24,4 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <RouterProvider router={router} />
-  ,
 )

@@ -19,7 +19,7 @@ const messageSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-});
+}, {toJSON:{virtuals:true}});
 
 const Message = mongoose.model('messages', messageSchema);
 export default Message;

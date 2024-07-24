@@ -16,13 +16,13 @@ const conversationSchema = new mongoose.Schema({
     name:{
         type:String,
         default:''
-    }
-})
+    },
+}, {toJSON:{virtuals:true}, toObject: {virtuals:true}})
 
 conversationSchema.virtual('messages',{
     ref:'messages',
+    foreignField:'conversationId',
     localField:'_id',
-    foreignField:'conversationId'
 })
 
 const Conversation = mongoose.model("conversations", conversationSchema);
